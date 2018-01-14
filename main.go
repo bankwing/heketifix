@@ -16,15 +16,15 @@ import (
 )
 
 func main() {
-	tmpfile := "heketi.db"
+	dbfile := "./heketi.db"
 
 	// Setup BoltDB database
-	db, err := bolt.Open(tmpfile, 0600, &bolt.Options{Timeout: 3 * time.Second})
+	db, err := bolt.Open(dbfile, 0600, &bolt.Options{Timeout: 3 * time.Second})
 	if err != nil {
 		println(err.Error())
 	}
 
-	//defer os.Remove(tmpfile)
+	//defer os.Remove(dbfile)
 
 	// Try to view
 	// err = db.View(func(tx *bolt.Tx) error {
